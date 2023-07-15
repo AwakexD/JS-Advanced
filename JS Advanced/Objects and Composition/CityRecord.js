@@ -1,8 +1,8 @@
 function Solve(name, population, treasury) {
     const City = {
-        name: name,
-        population: population,
-        treasury: treasury,
+        name,
+        population,
+        treasury,
     };
 
     return City;

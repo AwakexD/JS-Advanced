@@ -33,3 +33,10 @@ let phones = {
 for (key in phones) {
     console.log(`${key} - ${phones[key]}`);
 }
+
+let names = Object.keys(phones);
+let phoneNumbers = Object.values(phones);
+
+Object.keys(phoneNumbers).forEach(x => {
+    console.log(`${x} - ${phones[x]}`);
+})
