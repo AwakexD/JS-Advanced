@@ -16,13 +16,11 @@ function Solve(clientOrder) {
     
     let addWheels = (size) => Array(4).fill(Math.floor(size) % 2 === 0 ? Math.floor(size) - 1 : Math.floor(size));
 
-    Car.engine = powertrain.find(x => x.power <= clientOrder.power);
+    Car.engine = powertrain.find(x => x.power >= clientOrder.power);
     Car.carriage = carriage.find(x => x.type === clientOrder.carriage);
     Car.wheels = addWheels(clientOrder.wheelsize);
     
-
-    console.log(Car);
-    console.log(Car.wheels);
+    return Car;
 }
 
 Solve({ model: 'VW Golf II',
