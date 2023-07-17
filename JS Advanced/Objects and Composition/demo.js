@@ -40,3 +40,7 @@ let phoneNumbers = Object.values(phones);
 Object.keys(phoneNumbers).forEach(x => {
     console.log(`${x} - ${phones[x]}`);
 })
+
+// Convert JSON to object
+let jsonPerson = JSON.stringify(person);
+console.log(typeof jsonPerson);
