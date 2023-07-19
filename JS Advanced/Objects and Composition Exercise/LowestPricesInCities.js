@@ -2,10 +2,8 @@ function Solve(input) {
     const information = {};
 
     for (const line of input) {
-        const tokens = line.split(' | ');
-        const cityName = tokens[0];
-        const productName = tokens[1];
-        const price = Number(tokens[2]);
+        let [cityName, productName, price] = input.shift().split(' | ');
+        price = Number(price);
 
         if (information.hasOwnProperty(productName)) {
             if (price < information[productName].price) {
