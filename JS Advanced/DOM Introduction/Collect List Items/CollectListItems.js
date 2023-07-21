@@ -1,9 +1,9 @@
 function extractText() {
-    let listElement = document.getElementsByTagName("li");
+    let liElements = document.querySelectorAll("ul li");
     let textBox = document.getElementById("result");
     let string = "";
     
-   for (const item of listElement) {
+   for (const item of liElements) {
         textBox.textContent += item.textContent + "\n";
    }
 }

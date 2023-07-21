@@ -1,5 +1,7 @@
 function showText() {
     let element = document.getElementById('more');
+    element.style.display = 'none';
 
-    delete element
+    let textElement = document.getElementById('text');
+    textElement.style.display = 'inline';
 }
