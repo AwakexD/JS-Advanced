@@ -9,6 +9,8 @@ function search() {
       if (element.textContent.includes(searchFor)) {
          element.innerHTML = `<b><u> ${element.textContent} </u></b>`
          mathesFound++;
+      } else {
+         element.innerHTML = `${element.textContent}`
       }
    });
 
