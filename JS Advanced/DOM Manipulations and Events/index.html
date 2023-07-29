@@ -6,18 +6,28 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Movie List</h1>
+    <h1>Event Handling Types</h1>
 
-    <ul id="movie-list">
-        <li>The Matrix</li>
-    </ul>
+    <h2>Counter</h2>
+    <div id="number">0</div>
+
+    <button id="increment">+</button>
+    <button id="decrement">-</button>
 
     <script>
-        let newMovie = document.createElement('li')
-        newMovie.textContent = 'Oppenheimer'
-        let movieListElement = document.getElementById('movie-list');
+        let numberElement = document.getElementById('number');
+        let incrementBtnElement = document.getElementById('increment');
+        let decrementBtnElement = document.getElementById('decrement');
 
-        movieListElement.appendChild(newMovie)
+        incrementBtnElement.onclick = () => {
+            let currentNumber = Number(numberElement.textContent);
+            numberElement.textContent = currentNumber + 1;
+        }
+
+        decrementBtnElement.addEventListener('click', () => {
+            let currentNumber = Number(numberElement.textContent);
+            numberElement.textContent = currentNumber - 1;
+        })
     </script>
 </body>
 </html>
