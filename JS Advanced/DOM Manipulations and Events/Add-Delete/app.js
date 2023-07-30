@@ -5,6 +5,8 @@ function addItem() {
     let itemLiElement = document.createElement('li');
     itemLiElement.textContent = inputElement;
 
+    inputElement = '';
+
     let deleteElement = document.createElement('a');
     deleteElement.href = "#"
     deleteElement.textContent = '[Delete]'
