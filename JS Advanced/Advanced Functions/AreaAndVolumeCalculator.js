@@ -11,11 +11,27 @@ function solve(area, vol, input) {
     let result = []
 
     for (const obj of input) {
-        result.push({area : area.call(obj), volume: vol.call(obj)});
+        result.push({
+            area : area.call(obj), 
+            volume: vol.call(obj)
+        });
     }
 
     console.log(result);
 
+}
+
+function solve2(area, vol, input) {
+    cordinates = JSON.parse(input);
+
+    let result = cordinates.map(x => {
+        return {
+            area : area.call(x),
+            volume : vol.call(x),
+        }
+    })
+
+    return result;
 }
 
 
