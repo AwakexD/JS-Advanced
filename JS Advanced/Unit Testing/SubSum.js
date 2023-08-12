@@ -9,9 +9,7 @@ function solution(numbers, start, end) {
     
     
     let subNumbers = numbers.slice(startIndex, endIndex + 1);
-    let sum = subNumbers.reduce((a, x) => {
-        return a + Number(x);
-    }, 0)
+    let sum = subNumbers.map(Number).reduce((a, x) => a + x, 0)
 
     return sum;
 }
