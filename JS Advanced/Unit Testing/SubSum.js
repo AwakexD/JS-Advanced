@@ -7,7 +7,7 @@ function solution(numbers, start, end) {
     let startIndex = Math.max(start, 0);
     let endIndex = Math.min(end, numbers.length - 1);
     
-    
+     
     let subNumbers = numbers.slice(startIndex, endIndex + 1);
     let sum = subNumbers.map(Number).reduce((a, x) => a + x, 0)
 
