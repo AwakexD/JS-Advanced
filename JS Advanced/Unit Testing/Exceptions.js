@@ -14,7 +14,7 @@ function getNumber() {
 
 function app() {
     let number;
-    
+
     try {
         number = getNumber();
     } catch (error) {  

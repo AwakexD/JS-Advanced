@@ -32,7 +32,7 @@ function solution(face, suit) {
     if (isValid(card)) {
         console.log(card.ToString());
     } else {
-        console.log('Error');
+        throw new Error();
     }
 
 }

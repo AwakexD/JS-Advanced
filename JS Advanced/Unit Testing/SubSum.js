@@ -1,6 +1,5 @@
 function solution(numbers, start, end) {
-    
-    if (!Array.isArray(numbers)) {
+     if (!Array.isArray(numbers)) {
         return NaN;
     } 
 
@@ -9,10 +8,12 @@ function solution(numbers, start, end) {
     
      
     let subNumbers = numbers.slice(startIndex, endIndex + 1);
-    let sum = subNumbers.map(Number).reduce((a, x) => a + x, 0)
+    let sum = subNumbers.reduce((a, x) => a + Number(x), 0);
 
     return sum;
 }
 
-console.log(solution([10, 20, 30, 40, 50, 60], 1, 3)); 
-console.log(solution([10, 20, 30, 40, 50, 60], 3, 300));
+//console.log(solution([10, 20, 30, 40, 50, 60], 1, 3)); 
+//console.log(solution([10, 20, 30, 40, 50, 60], 3, 300));
+
+module.exports = solution;
