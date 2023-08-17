@@ -13,4 +13,4 @@ describe('RGB-To-Hex', () => {
     it('Should convert rgb to hex', () => {
         expect(rgbToHexColor(255,158,170)).to.equal('#FF9EAA')
     })
- })
+}) 
