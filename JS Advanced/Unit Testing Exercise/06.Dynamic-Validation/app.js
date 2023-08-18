@@ -16,6 +16,4 @@ function validate() {
   
         return false
     }
-
-    //Missing the CSS file from the resource
 }
