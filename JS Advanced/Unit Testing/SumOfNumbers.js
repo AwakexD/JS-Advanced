@@ -6,5 +6,4 @@ function sum(arr) {
     return sum;
 }
 
-console.log(sum([1,2,3]));
 module.exports = sum;
