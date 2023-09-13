@@ -3,17 +3,17 @@ const baseUrl = 'http://localhost:3030/jsonstore'
 
 document.getElementById('load-contacts').addEventListener('click', () => {
     fetch(`${baseUrl}/phonebook`)
-    .then(res => res.json())
-    .then(data => {
-        phonebookList.innerHTML = '';
+        .then(res => res.json())
+        .then(data => {
+            phonebookList.innerHTML = '';
 
-        Object.values(data).forEach(element => {
-            let newLiElement = document.createElement('li');
-            newLiElement.textContent = `${element.person} - ${element.phone}`;
-            phonebookList.appendChild(newLiElement)
+            Object.values(data).forEach(element => {
+                let newLiElement = document.createElement('li');
+                newLiElement.textContent = `${element.person} - ${element.phone}`;
+                phonebookList.appendChild(newLiElement)
+            })
         })
-    })
-    .catch(err => console.log(err));
+        .catch(err => console.log(err));
 })
 
 
