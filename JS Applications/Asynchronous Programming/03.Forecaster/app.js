@@ -1,12 +1,12 @@
-function attachEvents() {
+async function attachEvents() {
     const conditions = {
         Sunny: '&#x2600',
         'Partly sunny': '&#x26C5',
         Overcast: '&#x2601',
         Rain: '&#x2614',
         Degrees: '&#176;',
-      };
-    
+    };
+
     document.getElementById('submit').addEventListener('click', async () => {
         document.getElementById('forecast').style.display = 'block';
         let locationInput = document.getElementById('location').value;
@@ -20,14 +20,14 @@ function attachEvents() {
             return;
         }
 
-        const todayWeather = getTodayWeather(locationCode);
-        const upcomingWeather = getTodayWeather(locationCode);
+        const todayWeather = await getTodayWeather(locationCode); // Await here
+        const upcomingWeather = await getUpcomingWeather(locationCode); // Await here
 
         const forecastDiv = document.createElement('div')
         forecastDiv.classList.add('forecasts')
 
         const conditionSymbol = document.createElement('span');
-        conditionSymbol.classList.add(['conditon', 'symbol']);
+        conditionSymbol.classList.add(['condition', 'symbol']);
         conditionSymbol.innerHTML = conditions[todayWeather.forecast.condition];
         forecastDiv.appendChild(conditionSymbol);
 
@@ -35,26 +35,24 @@ function attachEvents() {
         conditionSpan.classList.add('condition');
 
         conditionSpan.appendChild(
-            createElement('span', {classList : ['forecast-data']}, todayWeather.name)
+            createElement('span', {classList: ['forecast-data']}, todayWeather.name)
         );
 
         conditionSpan.appendChild(
-            createElement('span', {classList : ['forecast-data']},
-             `${todayWeather.forecast.low}&#176;/${todayWeather.forecast.high}${conditions.Degrees}`
+            createElement('span', {classList: ['forecast-data']},
+                `${todayWeather.forecast.low}&#176;/${todayWeather.forecast.high}${conditions.Degrees}`
             )
-        )
-
-        conditionSpan.appendChild(
-            createElement('span', {classList : ['forecast-data']}, todayWeather.condition)
         );
 
-        forecastDiv.append(conditionSpan);
+        conditionSpan.appendChild(
+            createElement('span', {classList: ['forecast-data']}, todayWeather.forecast.condition)
+        );
+
+        forecastDiv.appendChild(conditionSpan);
         document.getElementById('current').appendChild(forecastDiv);
 
-        //3-Day forecast div
-        
+        // 3-Day forecast div
     })
-
 
     async function searchLocation(location) {
         const res = await fetch('http://localhost:3030/jsonstore/forecaster/locations');
@@ -64,21 +62,34 @@ function attachEvents() {
         console.log(foundLocation);
         if (foundLocation) {
             return foundLocation.code;
-        } 
-        
+        }
+
         throw new Error('Location not found');
     }
 
     async function getTodayWeather(code) {
         const res = await fetch(`http://localhost:3030/jsonstore/forecaster/today/${code}`);
-        
+
         return await res.json();
     }
 
     async function getUpcomingWeather(code) {
-        const res = fetch(`http://localhost:3030/jsonstore/forecaster/upcoming/${code}`)
-        
+        const res = await fetch(`http://localhost:3030/jsonstore/forecaster/upcoming/${code}`);
+
         return await res.json();
+    }
+
+    function createElement(tagName, attributes, innerText) {
+        const element = document.createElement(tagName);
+        if (attributes) {
+            for (const key in attributes) {
+                element.setAttribute(key, attributes[key]);
+            }
+        }
+        if (innerText) {
+            element.innerText = innerText;
+        }
+        return element;
     }
 }
 
