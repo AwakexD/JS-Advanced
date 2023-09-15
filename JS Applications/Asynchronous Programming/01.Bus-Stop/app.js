@@ -1,7 +1,7 @@
 function getInfo() {
     const inputField = document.getElementById('stopId');
-    const stopNameDiv = document.getElementById('stopName');
-    const busesDiv = document.getElementById('buses');
+    const stopName = document.getElementById('stopName');
+    const busList = document.getElementById('buses');
     const submitButton = document.getElementById('submit');
 
     submitButton.addEventListener('click', () => {
@@ -11,17 +11,17 @@ function getInfo() {
         fetch(`${baseUrl}/${stopId}`)
             .then(res => res.json())
             .then(data => {
-                stopNameDiv.textContent = data.name;
-                busesDiv.innerHTML = '';
+                stopName.textContent = data.name;
+                busList.innerHTML = '';
 
                 Object.entries(data['buses']).forEach(bus => {
                     let busElement = document.createElement('li');
                     busElement.textContent = `Bus ${bus[0]} arrives in ${bus[1]} minutes`;
-                    busesDiv.appendChild(busElement);
+                    busList.appendChild(busElement);
                 });
             })
             .catch(err => {
-                stopNameDiv.textContent = 'Error'
+                stopName.textContent = 'Error'
             })
     });
 
