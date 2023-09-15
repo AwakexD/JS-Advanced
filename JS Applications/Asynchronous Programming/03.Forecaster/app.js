@@ -20,8 +20,7 @@ async function attachEvents() {
             return;
         }
 
-        const todayWeather = await getTodayWeather(locationCode); // Await here
-        const upcomingWeather = await getUpcomingWeather(locationCode); // Await here
+        const todayWeather = await getTodayWeather(locationCode); 
 
         const forecastDiv = document.createElement('div')
         forecastDiv.classList.add('forecasts')
@@ -52,6 +51,23 @@ async function attachEvents() {
         document.getElementById('current').appendChild(forecastDiv);
 
         // 3-Day forecast div
+        const upcomingWeather = await getUpcomingWeather(locationCode); 
+        const upcomingDiv = document.getElementById('upcoming');
+
+        
+        const forecastInfoDiv = createElement('div', {classList : ['forecast-info']});
+
+        upcomingWeather.forecast.forEach(day => {
+            const upcoming = createElement('span', {classList : ['upcoming']});
+
+            upcoming.appendChild(createElement('span', {classList : ['symbol']}, conditions[day.condition]));
+            upcoming.appendChild(createElement('span', {classList : ['forecast-data']}, `${day.low}${conditions.Degrees}/${day.high}${conditions.Degrees}`));
+            upcoming.appendChild(createElement('span', {classList : ['forecast-data']}, day.condition));
+
+            forecastInfoDiv.appendChild(upcoming);
+        });
+
+        upcomingDiv.appendChild(forecastInfoDiv);
     })
 
     async function searchLocation(location) {
