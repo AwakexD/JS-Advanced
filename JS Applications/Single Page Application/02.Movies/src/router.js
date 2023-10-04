@@ -1,6 +1,6 @@
 import { renderHome } from "./home.js";
 import { renderLogin } from "./Login.js";
-import {renderLogout} from "./logout.js"
+import { renderLogout } from "./logout.js";
 import { renderRegister } from "./register.js";
 
 const routes = {

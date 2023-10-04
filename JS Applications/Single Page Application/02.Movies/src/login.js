@@ -1,5 +1,5 @@
 import { router } from "./router.js";
-import { updateAuth } from "./auth.js";
+import { updateNav } from "./auth.js";
 
 const loginSection = document.getElementById('form-login');
 const loginForm = loginSection.querySelector('#login-form');
@@ -24,7 +24,7 @@ loginForm.addEventListener('submit', (event) => {
             localStorage.setItem('user', JSON.stringify(user));
             loginForm.reset();
             router('/');
-            updateAuth();
+            updateNav();
         })
         .catch(err => console.log(err))
 })

@@ -1,8 +1,8 @@
-import { updateAuth } from './auth.js';
 import { router } from './router.js';
+import { updateNav } from './auth.js';
 
 router('/');
-updateAuth();
+updateNav();
 
 const navigationElement = document.querySelector('.navbar');
 navigationElement.addEventListener('click',  (event) => {
